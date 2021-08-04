@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductsRequest;
 
 use App\Models\Product;
+
 
 class ProductsController extends Controller
 {
@@ -19,8 +21,17 @@ class ProductsController extends Controller
         return view("pages.products.create");
 
     }
-    public function store (Request $request) {
+    public function store (ProductsRequest $request) {
        // dd($request->all());
+        // dd(1);
+        // $rules = [
+        //     "name" => "required",
+        //     "price" => "required|numeric|max:10|min:1",
+        //     "count" => "required",
+        // ];
+
+        // $this->validate($request, $rules);
+
 
         $name = $request->name;
         $price = $request->price;
@@ -56,7 +67,7 @@ class ProductsController extends Controller
 
 
     } 
-    public function update (Request $request, $id) {
+    public function update (ProductsRequest $request, $id) {
         $product = Product::find($id);
 
         $name = $request->name;
