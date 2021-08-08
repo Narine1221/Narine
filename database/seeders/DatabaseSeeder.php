@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             ProductsSeeder::class,
             CountriesSeeder::class,
             UsersSeeder::class,
+            CarsSeeder::class,
+            PostSeeder::class,
         ]);
     }
 }

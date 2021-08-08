@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CarsController;
+use App\Http\Controllers\PostsController;
 
 
 /*
@@ -17,28 +19,50 @@ use App\Http\Controllers\AdminController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::prefix("/products")->name("products.")->group(function () {
+	Route::get('', [ProductsController::class, "index"]);
 
-Route::get('/products', [ProductsController::class, "index"]);
+	Route::get('/create', [ProductsController::class, "create"]);
+	Route::post('/create', [ProductsController::class, "store"]);
 
-Route::get('/countries', [CountriesController::class, "index"]);
+	Route::get('/edit/{id}', [ProductsController::class, "edit"]);
+	Route::post('/edit/{id}', [ProductsController::class, "update"]);
 
-Route::get('/products/create', [ProductsController::class, "create"]);
-Route::post('/products/create', [ProductsController::class, "store"]);
-
-Route::get('/products/edit/{id}', [ProductsController::class, "edit"]);
-Route::post('/products/edit/{id}', [ProductsController::class, "update"]);
-
-Route::post('/products/delete/{id}', [ProductsController::class, "delete"]);
-
-Route::get('/countries/create', [CountriesController::class, "create"]);
-Route::post('/countries/create', [CountriesController::class, "store"]);
-
-Route::get('/countries/edit/{id}', [CountriesController::class, "edit"]);
-Route::post('/countries/edit/{id}', [CountriesController::class, "update"]);
-
-Route::post('/countries/delete/{id}', [CountriesController::class, "delete"]);
+	Route::post('/delete/{id}', [ProductsController::class, "delete"]);
+});
 
 
+Route::prefix("/countries")->name("countries.")->group(function () {
+	Route::get('', [CountriesController::class, "index"])->name("index");
+
+	Route::get('/create', [CountriesController::class, "create"]);
+	Route::post('/create', [CountriesController::class, "store"]);
+
+	Route::get('/edit/{id}', [CountriesController::class, "edit"]);
+	Route::post('/edit/{id}', [CountriesController::class, "update"]);
+
+	Route::post('/delete/{id}', [CountriesController::class, "delete"]);
+});
+
+
+Route::prefix("/cars")->name("cars.")->group(function () {
+
+	Route::get('', [CarsController::class, "index"])->name("index");
+
+	Route::get('/create', [CarsController::class, "create"])->name("create");
+	Route::post('/create', [CarsController::class, "store"]);
+
+	Route::get('/edit/{id}', [CarsController::class, "edit"])->name("edit");
+	Route::post('/edit/{id}', [CarsController::class, "update"]);
+
+	Route::post('/delete/{id}', [CarsController::class, "delete"]);
+});
+
+
+
+
+
+Route::get('/posts', [PostsController::class, "index"])->name("index");
 
 
 

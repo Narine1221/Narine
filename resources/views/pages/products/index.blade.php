@@ -2,22 +2,17 @@
 
 @section("title", "Products")
 
-@push("_js")
-    <script>
-        alert(1);
-    </script>
 
-@endpush
 
 @section("content")
 
 <div class="container mt-5">
-    @auth
-        <a href="/products/create">New</a>
-    @else
-        Sign to create
+    <!-- @auth -->
+    <!-- @else
+    Sign to create
     @endauth
-    {{-- @guest --}}
+    {{-- @guest --}} -->
+    <a href="/products/create">New</a>
     <table class="table table-striped table-dark">
         <tr>
             <th>#</th>

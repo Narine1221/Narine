@@ -15,6 +15,35 @@
 </head>
 <body>
 
+   <div>
+        <ul class="row" style="list-style: none;">
+
+            <li class="col-2">
+                <a href="{{ route("countries.index") }}" class="btn
+                    @if(explode(".", Route::current()->getName())[0] == 'countries')
+                        btn-primary
+                    @else
+                        btn-secondary
+                    @endif
+                display-block w-100">
+                    Countries
+                </a>
+            </li>
+
+            <li class="col-2">
+                <a href="{{ route("cars.index") }}" class="btn
+                    @if(explode(".", Route::current()->getName())[0] == 'cars')
+                        btn-primary
+                    @else
+                        btn-secondary
+                    @endif
+                display-block w-100">
+                    Cars
+                </a>
+            </li>
+        </ul>
+    </div>
+
     @yield("content")
 
 
